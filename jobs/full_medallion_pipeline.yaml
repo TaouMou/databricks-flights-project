@@ -1,0 +1,23 @@
+resources:
+  jobs:
+    full_medallion_pipeline:
+      name: full_medallion_pipeline
+      tasks:
+        - task_key: Bronze_Layer
+          run_job_task:
+            job_id: 1028069280555968
+        - task_key: Silver_Layer
+          depends_on:
+            - task_key: Bronze_Layer
+          pipeline_task:
+            pipeline_id: 04446e76-55cf-455f-a3ef-81aebaa1546b
+            full_refresh: false
+        - task_key: Gold_Layer
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Repos/${workspace.current_user.userName}/E2E Flights Project/gold_layer
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
