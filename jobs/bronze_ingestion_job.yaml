@@ -1,0 +1,30 @@
+resources:
+  jobs:
+    bronze_ingestion_job:
+      name: bronze_ingestion_job
+      tasks:
+        - task_key: Bronze_Parameters
+          notebook_task:
+            notebook_path: /Repos/${workspace.current_user.userName}/E2E Flights
+              Project/jobs/parameter_job
+            source: WORKSPACE
+        - task_key: Bronze_Ingestion
+          depends_on:
+            - task_key: Bronze_Parameters
+          for_each_task:
+            inputs: "{{tasks.Bronze_Parameters.values.job_params}}"
+            concurrency: 4
+            task:
+              task_key: Bronze_Ingestion_Iteration
+              notebook_task:
+                notebook_path: /Repos/${workspace.current_user.userName}/E2E Flights
+                  Project/jobs/bronze_layer_job
+                base_parameters:
+                  job_params: "{{input}}"
+                source: WORKSPACE
+              max_retries: 1
+              min_retry_interval_millis: 600000
+              disable_auto_optimization: false
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
