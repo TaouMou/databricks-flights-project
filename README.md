@@ -51,19 +51,19 @@ gold_layer.ipynb
 
 ### Tech Stack
 
-    Platform: Databricks (Unity Catalog, Workflows)
+**Platform:** Databricks (Unity Catalog, Workflows)
 
-    Languages: PySpark, SQL
+**Languages:** PySpark, SQL
 
-    Storage: Delta Tables (Databricks)
+**Storage:** Delta Tables (Databricks)
 
-    Ingestion: Autoloader (Cloud Files)
+**Ingestion:** Autoloader (Cloud Files)
 
-    Transformation: PySpark & Declarative Pipelines
+**Transformation:** PySpark & Declarative Pipelines
 
-    Orchestration: Databricks Jobs
+**Orchestration:** Databricks Jobs
 
-    Visualization: Power BI
+**Visualization:** Power BI
 
 ### Data Schema
 
@@ -96,6 +96,11 @@ jobs/
 ```
 
 ### Business Intelligence
+
+```
+dasboard/
+└── Flight Visualisations.pbix
+```
 
 The finalized Gold layer is connected to Power BI via a Databricks SQL Warehouse connection. The resulting dashboard provides actionable insights through three specialized views:
 
