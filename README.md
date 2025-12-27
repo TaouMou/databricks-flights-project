@@ -32,7 +32,7 @@ bronze_layer.ipynb
 parameters.ipynb
 ```
 
-**Silver Layer (Transformation):** Implements Lakeview declarative piples for pipeline management. This layer handles data cleansing, type control, and surrogate key generation for each dimension, and the implementation of Slowly Changing Dimensions for historical tracking.
+**Silver Layer (Transformation):** Implements Lakeview declarative piplines. This layer handles data cleansing, type control, and surrogate key generation for each dimension, and the implementation of Slowly Changing Dimensions for historical tracking.
 
 ```
 silver_layer/
